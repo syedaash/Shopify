@@ -14,16 +14,17 @@ order_amount per item as the total_items vary, so create a new variable
 “unit_price” by dividing the order_amount by total_items. After doing it, we should check for outliers (I also checked that there are outliers for order_amount or total_item 
 too, so we can dig these variables too) of the new variable “unit_price” by doing a box plot. If we want to check outlier for unit_price(but if we choose other variable,
 we will do similar approach) then we should do a brief analysis that includes:
-•	Box Plot of the “unit_price” to visualize outliers
-•	To find those outliers, calculate lower limit (LL)=Q1-1.5*IQR and upper limit (UL) =Q3+1.5*IQR
-•	Therefore, the data that are greater than UL or less than LL would be an outlier
-•	Sort the data in order based on the “unit_price” variable and see the data (Optional).
-•	Find out how many data are outside of the range and extract those datasets and see.
-•	Those outliers might be related with a (or few, In my code I have seen two particular shop 42 and 78) shop, we should dig dipper in those few stores and find out what happens
+• Box Plot of the “unit_price” to visualize outliers
+• To find those outliers, calculate lower limit (LL)=Q1-1.5*IQR and upper limit (UL) =Q3+1.5*IQR
+• Therefore, the data that are greater than UL or less than LL would be an outlier
+• Sort the data in order based on the “unit_price” variable and see the data (Optional).
+• Find out how many data are outside of the range and extract those datasets and see.
+• Those outliers might be related with a (or few, In my code I have seen two particular shop 42 and 78) shop, we should dig dipper in those few stores and find out what happens
 exactly (we should do an enquiry before we proceed with our analysis), their machine might not work properly or maybe new cashier came who are doing mistake he/she/they don’t
 know. If we can’t dig dipper due to time/cost, then we should either use median instead of mean/average or exclude those data for our further analysis. 
-•	Other than dropping the outliers, we could deal with outlier by
-capping outliers’ data, assigning a new value or trying a transformation
+
+But, other than dropping the outliers, we could deal with outlier by
+capping outliers’ data, assigning a new value(like median instead of mean) or trying a transformation
 
 
 b. What metric would you report for this dataset?
