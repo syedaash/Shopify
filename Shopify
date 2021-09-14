@@ -26,15 +26,15 @@ know. If we can’t dig dipper due to time/cost, then we should either use media
 capping outliers’ data, assigning a new value or trying a transformation
 
 
-b.	What metric would you report for this dataset?
+b. What metric would you report for this dataset?
 
 Instead of using average order value I would report the median order value metric for this dataset as we have outliers.
 
-c.	What is its value?
+c. What is its value?
 The median order value is 284.
 
-Question 2: For this question you’ll need to use SQL. Follow this link to access the data set required for the challenge. Please use queries to answer the following questions. Paste your queries along with your final numerical answers below.
 
+Question 2: For this question you’ll need to use SQL. Follow this link to access the data set required for the challenge. Please use queries to answer the following questions. Paste your queries along with your final numerical answers below.
 
 a. How many orders were shipped by Speedy Express in total?
 
@@ -50,7 +50,7 @@ Output:
 Total order shipped by speedy express 
 3575
 
-b.	What is the last name of the employee with the most orders?
+b. What is the last name of the employee with the most orders?
 
 SELECT e.LastName
 FROM Shippers s
@@ -70,7 +70,7 @@ Davolio
 
 ## WE can use MAX for this problem too ##
 
-c.	What product was ordered the most by customers in Germany?
+c. What product was ordered the most by customers in Germany?
 
 SELECT p.ProductName "Most ordered product by Germany"
 FROM Customers c
