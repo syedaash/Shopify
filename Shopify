@@ -1,0 +1,93 @@
+"Shopify Technical Challenge"
+
+Question 1: Given some sample data, write a program to answer the following: click here to access the required data set
+
+On Shopify, we have exactly 100 sneaker shops, and each of these shops sells only one model of shoe. We want to do some analysis of the average order value (AOV). 
+When we look at orders data over a 30 day window, we naively calculate an AOV of $3145.13. Given that we know these shops are selling sneakers, a relatively affordable item,
+something seems wrong with our analysis. 
+
+a. Think about what could be going wrong with our calculation. Think about a better way to evaluate this data. 
+
+### I am not including the code that I used for number 1 as it was not asked for###
+The calculation is not wrong, but we can’t do this naïve calculation for our data. I think we have outliers, so we should check it first. We should look for is the 
+order_amount per item as the total_items vary, so create a new variable
+“unit_price” by dividing the order_amount by total_items. After doing it, we should check for outliers (I also checked that there are outliers for order_amount or total_item 
+too, so we can dig these variables too) of the new variable “unit_price” by doing a box plot. If we want to check outlier for unit_price(but if we choose other variable,
+we will do similar approach) then we should do a brief analysis that includes:
+•	Box Plot of the “unit_price” to visualize outliers
+•	To find those outliers, calculate lower limit (LL)=Q1-1.5*IQR and upper limit (UL) =Q3+1.5*IQR
+•	Therefore, the data that are greater than UL or less than LL would be an outlier
+•	Sort the data in order based on the “unit_price” variable and see the data (Optional).
+•	Find out how many data are outside of the range and extract those datasets and see.
+•	Those outliers might be related with a (or few, In my code I have seen two particular shop 42 and 78) shop, we should dig dipper in those few stores and find out what happens
+exactly (we should do an enquiry before we proceed with our analysis), their machine might not work properly or maybe new cashier came who are doing mistake he/she/they don’t
+know. If we can’t dig dipper due to time/cost, then we should either use median instead of mean/average or exclude those data for our further analysis. 
+•	Other than dropping the outliers, we could deal with outlier by
+capping outliers’ data, assigning a new value or trying a transformation
+
+
+b.	What metric would you report for this dataset?
+
+Instead of using average order value I would report the median order value metric for this dataset as we have outliers.
+
+c.	What is its value?
+The median order value is 284.
+
+Question 2: For this question you’ll need to use SQL. Follow this link to access the data set required for the challenge. Please use queries to answer the following questions. Paste your queries along with your final numerical answers below.
+
+
+a. How many orders were shipped by Speedy Express in total?
+
+SELECT SUM(od.Quantity) "Total order shipped by speedy express"
+FROM Shippers s
+JOIN Orders o
+ON s.ShipperID=o.ShipperID
+JOIN OrderDetails od
+ON od.OrderID=o.OrderID
+WHERE s.ShipperName="Speedy Express";
+
+Output:
+Total order shipped by speedy express 
+3575
+
+b.	What is the last name of the employee with the most orders?
+
+SELECT e.LastName
+FROM Shippers s
+JOIN Orders o
+ON s.ShipperID=o.ShipperID
+JOIN OrderDetails od
+ON od.OrderID=o.OrderID
+JOIN Employees e
+ON o.EmployeeID=e.EmployeeID
+GROUP BY o.EmployeeID
+ORDER BY od.Quantity DESC
+LIMIT 1;
+
+Output:
+LastName
+Davolio
+
+## WE can use MAX for this problem too ##
+
+c.	What product was ordered the most by customers in Germany?
+
+SELECT p.ProductName "Most ordered product by Germany"
+FROM Customers c
+JOIN Orders o
+ON c.CustomerID=o.CustomerID
+JOIN OrderDetails od
+ON od.OrderID=o.OrderID
+JOIN Products p
+ON p.ProductID=od.ProductID
+WHERE c.Country="Germany"
+GROUP BY c.Country
+ORDER BY od.Quantity DESC
+LIMIT 1;
+
+Output:
+Most ordered product by Germany
+Boston Crab Meat
+       
+
+
